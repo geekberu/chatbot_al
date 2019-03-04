@@ -24,7 +24,7 @@ python -m nltk.downloader punkt
 - Supreme Court Conversation Data. Follow the [instructions](corpus/data/scotus "instructions") and use the argument `--corpus scotus`.
 - [Ubuntu Dialogue Corpus](https://arxiv.org/abs/1506.08909 "Ubuntu Dialogue Corpus"). Follow the [instructions](corpus/data/ubuntu "instructions") and use the argument `--corpus ubuntu`.
 
-Many thanks to @Conchylicultor to provide above curpus information.
+Many thanks to @Conchylicultor for providing above corpus information.
 
 ## Training
 `python main.py`

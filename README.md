@@ -29,7 +29,7 @@ Many thanks to @Conchylicultor to provide above curpus information.
 ## Training
 `python main.py`
 
-**Fllow below steps:**
+**Follow below steps:**
 1. Pre train the Generator and get the GEN_0 model.
 2. GEN model test
 3. Pre train the Discriminator and get the DISC_0 model

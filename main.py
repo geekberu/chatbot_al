@@ -262,17 +262,18 @@ def parse_args():
     """
 
     parser = argparse.ArgumentParser()
+    parser.add_argument('--test', type=int, default=0, help='Test mode')
     parser.add_argument('--maxLength', type=int, default=40,
-                        help='maximum length of the sentence (for input and output), define number of maximum step of the RNN')
+                        help='Maximum length of the sentence (for input and output), define number of maximum step of the RNN')
     parser.add_argument('--filterVocab', type=int, default=1,
-                        help='remove rarely used words (by default words used only once). 0 to keep all words.')
+                        help='Remove rarely used words (by default words used only once). 0 to keep all words.')
     parser.add_argument('--vocabularySize', type=int, default=40000,
                         help='Limit the number of words in the vocabulary (0 for unlimited)')
     parser.add_argument('--corpus', choices=TextData.corpusChoices(), default=TextData.corpusChoices()[0],
-                        help='corpus on which extract the dataset.')
-    parser.add_argument('--rootDir', type=str, default='corpus', help='folder where to look for the models and data')
+                        help='Corpus on which extract the dataset.')
+    parser.add_argument('--rootDir', type=str, default='corpus', help='Folder where to look for the models and data')
     parser.add_argument('--datasetTag', type=str, default='',
-                        help='add a tag to the dataset (file where to load the vocabulary and the precomputed samples, not the original corpus). Useful to manage multiple versions. Also used to define the file used for the lightweight format.')  # The samples are computed from the corpus if it does not exist already. There are saved in \'data/samples/\'
+                        help='Add a tag to the dataset (file where to load the vocabulary and the precomputed samples, not the original corpus). Useful to manage multiple versions. Also used to define the file used for the lightweight format.')  # The samples are computed from the corpus if it does not exist already. There are saved in \'data/samples/\'
     parser.add_argument('--skipLines', action='store_true', default=True,
                         help='Generate training samples by only using even conversation lines as questions (and odd lines as answer). Useful to train the network on a particular person.')
     args = parser.parse_args()
@@ -284,23 +285,26 @@ def main():
     args = parse_args()
     text_data = TextData(args)
     try:
-        # Step 1: Pre train the Generator and get the GEN_0 model
-        gen_pre_train(text_data)
+        if args.test:
+            gen_test_interactive(text_data)
+        else:
+            # Step 1: Pre train the Generator and get the GEN_0 model
+            gen_pre_train(text_data)
 
-        # Step 2: GEN model test
-        # gen_test_interactive(text_data)
+            # Step 2: GEN model test
+            # gen_test_interactive(text_data)
 
-        # Step 3: Pre train the Discriminator and get the DISC_0 model
-        # disc_pre_train(text_data)
+            # Step 3: Pre train the Discriminator and get the DISC_0 model
+            # disc_pre_train(text_data)
 
-        # Step 4: Train the GEN model and DISC model using AL/RL
-        # al_train(text_data)
+            # Step 4: Train the GEN model and DISC model using AL/RL
+            # al_train(text_data)
 
-        # Step 5: GEN model test
-        # gen_test_interactive(text_data)
+            # Step 5: GEN model test
+            # gen_test_interactive(text_data)
 
-        # integration test
-        # connection.start_server(text_data, True)
+            # integration test
+            # connection.start_server(text_data, True)
     except KeyboardInterrupt:
         pass
 

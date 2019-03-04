@@ -1,10 +1,10 @@
 # AL/RL based Chatbot
 An implementation of Chatbot using Adversarial Learning and Reinforcement Learning
 ## References
-- **Paper**
-Adversarial Learning for Neural Dialogue Generation https://arxiv.org/pdf/1701.06547.pdf
-- **Initial implementation** -- Many thanks to @liuyuemaicha
-https://github.com/liuyuemaicha/Adversarial-Learning-for-Neural-Dialogue-Generation-in-Tensorflow
+- **Paper**:
+[Adversarial Learning for Neural Dialogue Generation](https://arxiv.org/pdf/1701.06547.pdf "Adversarial Learning for Neural Dialogue Generation")
+- **Initial implementation**:
+Many thanks to [@liuyuemaicha](https://github.com/liuyuemaicha/Adversarial-Learning-for-Neural-Dialogue-Generation-in-Tensorflow "@liuyuemaicha")
 
 ## Dependancy
 - Python 3.6
@@ -27,6 +27,8 @@ python -m nltk.downloader punkt
 Many thanks to @Conchylicultor to provide above curpus information.
 
 ## Training
+`python main.py`
+
 **Fllow below steps:**
 1. Pre train the Generator and get the GEN_0 model.
 2. GEN model test
@@ -34,7 +36,11 @@ Many thanks to @Conchylicultor to provide above curpus information.
 4. Train the GEN model and DISC model using AL/RL
 5. GEN model test
 
-## Test Resluts
+## Test 
+`python main.py --test 1`
+
+Results
+
 	Q: Hi.
 	A: Hey.
 	Q: How are you..

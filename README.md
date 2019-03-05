@@ -6,7 +6,7 @@ An implementation of Chatbot using Adversarial Learning and Reinforcement Learni
 - **Initial implementation**:
 Many thanks to [@liuyuemaicha](https://github.com/liuyuemaicha/Adversarial-Learning-for-Neural-Dialogue-Generation-in-Tensorflow "@liuyuemaicha")
 
-## Dependancy
+## Dependencies
 - Python 3.6
 - TensorFlow 1.12.0
 - nltk

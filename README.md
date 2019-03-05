@@ -2,7 +2,7 @@
 An implementation of Chatbot using Adversarial Learning and Reinforcement Learning
 ## References
 - **Paper**:
-[Adversarial Learning for Neural Dialogue Generation](https://arxiv.org/pdf/1701.06547.pdf "Adversarial Learning for Neural Dialogue Generation")
+[Adversarial Learning for Neural Dialogue Generation](https://arxiv.org/abs/1701.06547 "Adversarial Learning for Neural Dialogue Generation")
 - **Initial implementation**:
 Many thanks to [@liuyuemaicha](https://github.com/liuyuemaicha/Adversarial-Learning-for-Neural-Dialogue-Generation-in-Tensorflow "@liuyuemaicha")
 

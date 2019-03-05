@@ -66,9 +66,9 @@ class Seq2SeqModel(object):
                 encoder_inputs,
                 decoder_inputs,
                 cell,
-                num_encoder_symbols= source_vocab_size,
-                num_decoder_symbols= target_vocab_size,
-                embedding_size= emb_dim,
+                num_encoder_symbols=source_vocab_size,
+                num_decoder_symbols=target_vocab_size,
+                embedding_size=emb_dim,
                 output_projection=output_projection,
                 feed_previous=do_decode,
                 mc_search=self.mc_search,
@@ -111,7 +111,7 @@ class Seq2SeqModel(object):
                 self.updates = []
                 self.aj_losses = []
                 self.gen_params = [p for p in tf.trainable_variables() if name_scope in p.name]
-                #opt = tf.train.GradientDescentOptimizer(self.learning_rate)
+                # opt = tf.train.GradientDescentOptimizer(self.learning_rate)
                 opt = tf.train.AdamOptimizer(self.learning_rate)
                 for b in range(len(self.buckets)):
                     R = tf.subtract(self.reward[b], self.reward_bias)
@@ -174,7 +174,7 @@ class Seq2SeqModel(object):
             output_feed = [self.updates[bucket_id],  # Update Op that does SGD.
                        self.aj_losses[bucket_id],  # Gradient norm.
                        self.losses[bucket_id]]  # Loss for this batch.
-        else: # testing or reinforcement learning
+        else:  # testing or reinforcement learning
             output_feed = [self.encoder_state[bucket_id], self.losses[bucket_id]]  # Loss for this batch.
             for l in range(decoder_size):  # Output logits.
                 output_feed.append(self.outputs[bucket_id][l])

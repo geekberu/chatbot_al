@@ -5,7 +5,7 @@ from tensorflow.contrib import rnn
 
 class Hier_rnn_model(object):
     def __init__(self, config, vocab_size, name_scope, dtype=tf.float32):
-        #with tf.variable_scope(name_or_scope=scope_name):
+        # with tf.variable_scope(name_or_scope=scope_name):
         emb_dim = config.embed_dim
         num_layers = config.num_layers
         # vocab_size = config.vocab_size
@@ -39,7 +39,7 @@ class Hier_rnn_model(object):
         self.b_state = []
         self.b_logits = []
         self.b_loss = []
-        #self.b_cost = []
+        # self.b_cost = []
         self.b_train_op = []
         for i, bucket in enumerate(buckets):
             with tf.variable_scope(name_or_scope="Hier_RNN_encoder", reuse=True if i > 0 else None) as var_scope:
@@ -70,7 +70,7 @@ class Hier_rnn_model(object):
             with tf.name_scope("gradient_descent"):
                 disc_params = [var for var in tf.trainable_variables() if name_scope in var.name]
                 grads, norm = tf.clip_by_global_norm(tf.gradients(mean_loss, disc_params), config.max_grad_norm)
-                #optimizer = tf.train.GradientDescentOptimizer(self.lr)
+                # optimizer = tf.train.GradientDescentOptimizer(self.lr)
                 optimizer = tf.train.AdamOptimizer(self.lr)
                 train_op = optimizer.apply_gradients(zip(grads, disc_params), global_step=self.global_step)
                 self.b_train_op.append(train_op)
@@ -121,8 +121,6 @@ def main(_):
 
     pass
 
-if __name__ == '__main__':
-    tf.app.run()
 
 
 

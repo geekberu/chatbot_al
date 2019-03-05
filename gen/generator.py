@@ -173,7 +173,7 @@ def train(gen_config, text_data):
         # This is the training loop.
         step_time, loss = 0.0, 0.0
         current_step = 0
-        #previous_losses = []
+        # previous_losses = []
 
         gen_loss_summary = tf.Summary()
         gen_writer = tf.summary.FileWriter(gen_config.tensorboard_dir, sess.graph)
@@ -186,8 +186,6 @@ def train(gen_config, text_data):
 
             # Get a batch and make a step.
             start_time = time.time()
-            # encoder_inputs, decoder_inputs, target_weights, batch_source_encoder, batch_source_decoder = model.get_batch(
-            #     train_set, bucket_id, gen_config.batch_size)
             encoder_inputs, decoder_inputs, target_weights, _, _ = get_batch(gen_config, train_set, bucket_id,
                                                                              gen_config.batch_size, text_data)
 

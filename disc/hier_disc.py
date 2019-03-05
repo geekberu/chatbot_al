@@ -2,10 +2,8 @@ import tensorflow as tf
 import numpy as np
 import os
 import time
-import datetime
 import random
 from disc.hier_rnn_model import Hier_rnn_model
-from tensorflow.python.platform import gfile
 import sys
 
 
@@ -102,7 +100,7 @@ def hier_train(config_disc, config_evl, vocab_size, train_set):
 
         step_time, loss = 0.0, 0.0
         current_step = 0
-        #previous_losses = []
+        # previous_losses = []
         step_loss_summary = tf.Summary()
         disc_writer = tf.summary.FileWriter(config_disc.tensorboard_dir, session.graph)
 
@@ -157,9 +155,7 @@ def hier_train(config_disc, config_evl, vocab_size, train_set):
                 reward = reward / gen_num
                 print("reward: ", reward)
 
-
                 print("current_step: %d, step_loss: %.4f" %(current_step, step_loss))
-
 
                 if current_step % (config_disc.steps_per_checkpoint * 6) == 0:
                     print("current_step: %d, save_model" % (current_step))
@@ -168,7 +164,6 @@ def hier_train(config_disc, config_evl, vocab_size, train_set):
                         os.makedirs(disc_ckpt_dir)
                     disc_model_path = os.path.join(disc_ckpt_dir, "disc_pretrain.model")
                     model.saver.save(session, disc_model_path, global_step=model.global_step)
-
 
                 step_time, loss = 0.0, 0.0
                 sys.stdout.flush()
